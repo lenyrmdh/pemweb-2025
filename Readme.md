@@ -116,3 +116,34 @@ chown -R www-data:www-data storage/*
 chmod 777 -R storage/* && chmod 777 -R bootstrap/*
 php artisan project:init
 ```
+11. #### **Cara Buat Api**
+```bash
+docker compose up -d --build
+docker exec -it pemweb bash
+composer create-project --prefer-dist raugadh/fila-starter .
+ubah .env di folder src
+php artisan key:generate
+php artisan storage:link
+php artisan migrate
+php artisan project:init
+chown -R www-data:www-data storage/*
+chown -R www-data:www-data bootstrap/*
+ubah database di migrations
+php artisan make:controller
+ubah di app models di client dan product
+ke app/http ke controllers folder api isi productapicontroller 
+ke terminal php artisan make:middleware ClientAuth
+lalu ke app/http/ middleware dan isi file clientauth
+ke folder route bikin file api.php dan isi
+ke bootsraps ke app.php dan isi filenya
+ke terminal dan  php artisan route:list
+selanjutnya ke folder app/resources dan isi file clientresource dna productresource.
+php artisan make:filament-resource Client --generate 
+php artisan make:filament-resource Products --generate
+php artisan migrate
+jika udah isi juga di folder clientresources/pages dan edit file editclient
+buka ke chrome dan buka localhost/admin
+isi di client dan products
+jika sudah dibuat buka postman buat new collection Pemrograman Web dan add folder Products setelah itu add request 
+tulis di get http://localhost/api/products dan auth typenya bearer token dan copy token yang ada di localhost dibagian client lalu send
+```
