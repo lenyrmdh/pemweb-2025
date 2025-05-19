@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Product;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class ProductSeeder extends Seeder
@@ -13,10 +12,16 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
-        if(Product::count()==0) {
+        if (Product::count() == 0) {
             Product::create([
-                'name' => 'MyTeam',
-                'description' => 'Kenali Leny (Web Developer), Adam (Network Engineer) dan Anel (Data Analyst Specialist), — tiga talenta IT berbakat dari Tangerang yang siap membangun solusi digital terbaik.',
+                'name' => 'Leadership Team',
+                'description' => 'Tim pimpinan kami berpengalaman dan berdedikasi, memimpin perusahaan menuju sukses. CEO Adam Putra Pratama fokus pada visi jangka panjang, COO Leny Ramadhani Setiawan mengelola operasional, dan CFO Anel Safitri bertanggung jawab atas keuangan.',
+                'image' => '',
+            ]);
+
+            Product::create([
+                'name' => 'Contact Us',
+                'description' => 'Hubungi kami untuk pertanyaan, saran, atau kerjasama. Tim kami siap membantu melalui email digital@edu.com atau melalui telepon di (021) 123-4567.',
                 'image' => '',
             ]);
         }

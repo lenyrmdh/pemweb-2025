@@ -15,7 +15,7 @@ class PageConfigSeeder extends Seeder
     {
         if(PageConfig::count()==0) {
             PageConfig::create([
-                'title' => 'Welcome To My Website',
+                'title' => 'Selamat datang di pusat informasi karyawan DigitalEdu',
                 'detail' => 'Data Employee Pt.DigitalEdu',
                 'image' => '',
             ]);

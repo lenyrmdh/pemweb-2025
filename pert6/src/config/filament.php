@@ -96,6 +96,10 @@ return [
     |
     */
 
+    'panels' => [
+    \App\Providers\Filament\AdminPanelProvider::class,
+    \App\Providers\Filament\EmployeePanelProvider::class,
+],
     'system_route_prefix' => 'filament',
 
 ];

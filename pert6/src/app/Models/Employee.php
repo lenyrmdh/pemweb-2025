@@ -14,7 +14,14 @@ class Employee extends Model
         'position',
         'division',
         'city',
+        'salary',
         'birthdate',
         'photo',
+        'user_id',
     ]);
+
+    public function user()
+{
+    return $this->belongsTo(User::class);
+}
 }

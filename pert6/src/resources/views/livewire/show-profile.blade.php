@@ -6,6 +6,7 @@
           <p>{{ $employee->position }}</p>
           <p>{{ $employee->division }}</p>
           <p><i class="fa fa-map-marker"></i> {{ $employee->city }}</p>
+          <p>{{ $employee->salary }}</p>
           <p><i class="fa fa-calendar"></i> {{ \Carbon\Carbon::parse($employee->birthdate)->format('d M Y') }}</p>
       </div>
   @endforeach

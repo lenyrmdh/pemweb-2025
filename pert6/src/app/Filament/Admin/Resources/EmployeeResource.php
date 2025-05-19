@@ -3,6 +3,7 @@
 namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\EmployeeResource\Pages;
+use App\Filament\Admin\Resources\EmployeeResource\RelationManagers;
 use App\Models\Employee;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -10,40 +11,41 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class EmployeeResource extends Resource
 {
     protected static ?string $model = Employee::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-user-group';
-
-    protected static ?string $navigationLabel = 'Employees';
-
-    protected static ?string $pluralModelLabel = 'Employees';
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
+                Forms\Components\TextInput::make('user_id')
+                    ->required()
+                    ->maxLength(255),
                 Forms\Components\TextInput::make('name')
                     ->required()
-                    ->maxLength(255)
-                    ->label('Name'),
-
+                    ->maxLength(255),
                 Forms\Components\TextInput::make('position')
                     ->required()
-                    ->maxLength(255)
-                    ->label('Position'),
-
+                    ->maxLength(255),
                 Forms\Components\TextInput::make('division')
                     ->required()
-                    ->maxLength(255)
-                    ->label('Division'),
-
-                Forms\Components\FileUpload::make('photo')
-                    ->image()
-                    ->directory('employees/photos')
-                    ->label('Photo'),
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('city')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('salary')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\DatePicker::make('birthdate')
+                    ->required(),
+                Forms\Components\TextInput::make('photo')
+                    ->required()
+                    ->maxLength(255),
             ]);
     }
 
@@ -51,37 +53,35 @@ class EmployeeResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\ImageColumn::make('photo')
-                    ->label('Photo')
-                    ->circular(),
-
                 Tables\Columns\TextColumn::make('name')
-                    ->label('Name')
-                    ->searchable()
-                    ->sortable(),
-
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('position')
-                    ->label('Position')
-                    ->searchable()
-                    ->sortable(),
-
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('division')
-                    ->label('Division')
-                    ->searchable()
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('city')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('salary')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('birthdate')
+                    ->date()
                     ->sortable(),
-
+                Tables\Columns\TextColumn::make('photo')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->label('Created')
                     ->dateTime()
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                // Tambahkan filter jika diperlukan
+                //
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -93,7 +93,7 @@ class EmployeeResource extends Resource
     public static function getRelations(): array
     {
         return [
-            // Tambah relasi jika ada
+            //
         ];
     }
 

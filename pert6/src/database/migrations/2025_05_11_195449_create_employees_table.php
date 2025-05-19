@@ -17,8 +17,10 @@ return new class extends Migration
             $table->string('position');
             $table->string('division');
             $table->string('city');
+            $table->string('salary');
             $table->date('birthdate');
             $table->string('photo'); 
+
             $table->timestamps();
         });
         

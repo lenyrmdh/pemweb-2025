@@ -15,7 +15,7 @@ class SeoSeeder extends Seeder
     {
         if(Seo::count()==0) {
             Seo::create([
-                'title' => 'Our Team',
+                'title' => 'Leadership Team',
                 'description' => 'Kenali Leny (Web Developer), Adam (Network Engineer) dan Anel (Data Analyst Specialist), — tiga talenta IT berbakat dari Tangerang yang siap membangun solusi digital terbaik.',
                 'keywords' => 'Pt.DigitalEdu',
                 'cannonical_url'=> 'http://localhost',
