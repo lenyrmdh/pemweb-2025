@@ -1,0 +1,33 @@
+@startuml
+left to right direction
+title Kerangka Berpikir
+
+' Bagian awal
+start
+:Permasalahan;
+:Studi Literatur;
+
+' Waterfall horizontal
+partition "Metode Waterfall" {
+    :Analisa kebutuhan;
+    note right: Diperlukan alat bantu parkir\nyang dapat memberikan informasi jarak
+
+    :Rancangan sistem;
+    note right: Menggunakan sensor ultrasonik HC-SR04,\nArduino UNO, buzzer, dan LCD
+
+    :Implementasi;
+    note right: Sistem membaca jarak,\nmenampilkannya di LCD,\ndan memberi peringatan melalui buzzer
+
+    :Pengujian;
+    note right: Pengemudi dapat lebih waspada saat\nparkir dan mencegah tabrakan
+
+    if ("Sesuai?") then ([Ya])
+        :Selesai;
+        note right: Pengemudi dapat lebih waspada saat\nparkir dan mencegah tabrakan
+    else ([Tidak])
+        -left-> :Analisa kebutuhan;
+    endif
+}
+
+stop
+@enduml

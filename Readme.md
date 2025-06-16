@@ -10,7 +10,7 @@
      ```
    * Di dalam container, buat project Laravel Fila Starter:
      ```bash
-     composer create-project --prefer-dist raugadh/fila starter .
+     composer create-project --prefer-dist raugadh/fila-starter .
      ```
    * Jika koneksi gagal:
      ```bash
